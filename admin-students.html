@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="admin-students.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="icon-container">
+            <img src="profile_1.png" alt="Profile Icon">
+        </div>
+        <div class="icon-container">
+            <a href="admin-stories.html">
+                <img src="open-book.png" alt="Book Icon">
+            </a>
+        </div>
+        <div class="icon-container">
+            <a href="admin-stories.html">
+                <img src="people (1).png" alt="User Icon">
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>STUDENTS</h1>
+
+        <div class="header">
+            <select id="section" onchange="handleSectionChange(this)">
+                <option value="" disabled selected>Select a Section</option>  <!-- Default placeholder option -->
+                <option value="add-new-section">Add New Section</option>
+            </select>
+            
+            <button class="delete-section-btn" onclick="deleteSection()">Delete Section</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Email</th>
+                    <th>Last Name</th>
+                    <th>Middle Name</th>
+                    <th>First Name</th>
+                    <th>S1</th>
+                    <th>S2</th>
+                    <th>S3</th>
+                    <th>S4</th>
+                </tr>
+            </thead>
+            <tbody></tbody>  <!-- Ensure the tbody exists -->
+        </table>
+        
+
+        <!-- Modal for Adding New Section -->
+        <div class="modal" id="add-section-modal" style="display: none;"> <!-- Initially hidden -->
+            <div class="modal-content">
+                <h2>Add New Section</h2>
+         <!-- Section Name -->
+                    <div class="form-row">
+                        <label for="section-name">Section Name:</label>
+                        <input type="text" id="section-name" placeholder="Enter Section Name" required>
+                    </div>
+
+                    <!-- Number of Students -->
+                    <div class="form-row">
+                        <label for="num-students">Number of Students:</label>
+                        <input type="number" id="num-students" placeholder="Enter Number of Students" min="1" required>
+                    </div>              
+                <div class="modal-footer">
+                    <button class="save-section-btn" onclick="addNewSection()">Save</button> <!-- Fixed the onclick function -->
+                    <button class="cancel-btn" onclick="closeModal()">Cancel</button> <!-- Fixed the onclick function -->
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+        <!-- Modal for Adding New Student -->
+        <div class="modal" id="add-student-modal">
+            <div class="modal-content">
+                <h2 id="modal-title">Add New Student</h2>
+
+                <div class="form-row">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" placeholder="Enter Last Name">
+                </div>
+
+                <div class="form-row">
+                    <label for="middle-name">Middle Name:</label>
+                    <input type="text" id="middle-name" placeholder="Enter Middle Name">
+                </div>
+
+                <div class="form-row">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" placeholder="Enter First Name">
+                </div>
+
+                <div class="form-row">
+                    <label for="new-password">New Password:</label>
+                    <div class="password-container">
+                        <input type="password" id="new-password" placeholder="Enter New Password">
+                        <span class="show-password" onclick="togglePasswordVisibility('new-password')">👁️</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" placeholder="Confirm Password">
+                        <span class="show-password" onclick="togglePasswordVisibility('confirm-password')">👁️</span>
+                    </div>
+                </div>
+
+                <!-- Modal Footer Buttons -->
+                <div class="modal-footer">
+                    <button class="save-student-btn" onclick="addStudent()">Save</button>
+                    <button class="cancel-btn" onclick="closeAddStudentModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Link to JavaScript file -->
+    <script src="addsection.js" type="module"></script>
+    <script src="admin-students.js" type="module"></script> <!-- Fixed the module type -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Account Management</title>
+    <link rel="stylesheet" href="add-student.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="icon-container">
+            <img src="profile_1.png" alt="Profile Icon">
+        </div>
+        <div class="icon-container">
+            <img src="open-book.png" alt="Book Icon">
+        </div>
+        <div class="icon-container">
+            <img src="people (1).png" alt="User Icon">
+        </div>
+        <div class="icon-container">
+            <img src="settings.png" alt="Settings Icon">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <h1>STUDENTS</h1>
+        <div class="student-container">
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-name">Student Name</label><br>
+                    <input type="text" id="student-name" name="student-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="student-section">Student Section</label><br>
+                    <select id="student-section" name="student-section">
+                        <option value="section1">Section 1</option>
+                        <option value="section2">Section 2</option>
+                        <option value="section3">Section 3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="new-password">New Password</label><br>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label><br>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Section Modal -->
+    <div id="add-section-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Section</h2>
+            <label for="section-name">Section Name</label><br>
+            <input type="text" id="section-name" required><br><br>
+            <label for="section-number">Section Number</label><br>
+            <input type="text" id="section-number" required><br><br>
+            <label for="num-students">Number of Students</label><br>
+            <input type="number" id="num-students" required><br><br>
+            <div id="section-error" style="color: red; display: none;"></div>
+            <button id="add-section-btn">Add Section</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"></script>
+    <script src="addsection.js"></script>
+</body>
+</html>

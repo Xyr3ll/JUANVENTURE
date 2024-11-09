@@ -1,0 +1,248 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f53bb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #a0dcff;
+    width: 70px;
+    height: 100vh; /* Full viewport height */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+}
+
+.icon-container img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    margin-bottom: 0; /* Remove margin to align with button */
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.pagination h2 {
+    margin: 0; /* Remove margin to align with the icon */
+    padding: 0 10px; /* Add padding for space around the text */
+    font-size: 20px; /* Keep the same font size */
+    color: rgb(255, 255, 255); /* Ensure text is white */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Keep margin at the bottom */
+}
+
+.add-question-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+}
+
+.add-question-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Container Styling */
+.container {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    flex: 1;
+    position: relative; /* Set position relative to enable absolute positioning for children */
+}
+
+select {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    color: black;
+    background-color: #aab3bdfd;
+}
+
+th {
+    background-color: #aab3bdfd;
+}
+
+/* Edit and Delete Icon Styling */
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}
+
+.pagination {
+    display: flex; /* Use flexbox to align items */
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Center items vertically */
+    position: absolute; /* Position absolutely within the container */
+    bottom: 20px; /* Distance from the bottom of the container */
+    right: 20px; /* Distance from the right of the container */
+    margin-top: 0; /* Remove margin above */
+}
+
+.prev-btn{
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-right: 10px; /* Space between text and icon */
+    align-self: center; /* Center icon vertically within the flex container */
+}
+
+.prev-btn:hover {
+    opacity: 0.7;
+}
+
+.next-btn {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-left: 10px; /* Space between text and icon */
+    align-self: center; /* Center icon vertically within the flex container */
+}
+
+.next-btn:hover {
+    opacity: 0.7;
+}
+
+/* Modal Default Styling */
+.modal {
+    display: none; /* Hide the modal by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Modal Content Styling */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 100%; /* Responsive */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#answersSection {
+    margin-top: 15px;
+}
+
+/* Input and Button Styles */
+#questionType, #questionText, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+#addQuestionBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    flex: 1;
+}
+
+#cancelQuestionBtn{
+    background-color: rgb(221, 60, 60);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    flex: 1;
+}
+
+#addQuestionBtn:hover {
+    background-color: #45a049;
+}
+
+#cancelQuestionBtn:hover {
+    background-color: #d82b2b;
+}
+
+#multipleChoiceSection div, #identificationSection {
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: calc(100% - 30px); /* Adjust the input width */
+}
+
+input[type="radio"] {
+    margin-right: 10px; /* Add some space between radio and text input */
+}

@@ -1,0 +1,322 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f53bb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #a0dcff;
+    width: 70px;
+    height: 100vh; /* Full viewport height */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+}
+
+.icon-container img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icon-container img:hover {
+    opacity: 0.7; /* Add a hover effect */
+}
+
+/* Header Styling */
+h1 {
+    font-size: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+/* Container Styling */
+.container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    flex: 1;
+}
+
+/* Header Styling */
+.header select {
+    margin-right: auto; /* Allow dropdown to be at the left */
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.header-buttons {
+    display: flex; /* Use flexbox to place buttons side by side */
+    gap: 10px; /* Space between buttons */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    color: black;
+    background-color: #aab3bdfd;
+}
+
+th {
+    background-color: #aab3bdfd;
+}
+
+/* Button Styling */
+.add-student {
+    background-color: #a3e0ff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.add-student:hover {
+    background-color: #8ac5e0;
+}
+
+.save-btn {
+    background-color: #45a049;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+.add-student-btn {
+    background-color: #8ac5e0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #327a36;
+}
+.add-student-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Positioned relative to the viewport */
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%; /* Increased width for better proportion */
+    max-width: 600px; /* Adjust the maximum width */
+    background-color: #f4f4f4;
+    padding: 30px; /* Increased padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
+
+.modal-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modal h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #004080;
+    text-align: center;
+}
+
+.modal-content label {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.modal-content input {
+    padding: 10px; /* Increase padding for better input appearance */
+    width: 100%; /* Adjust width of input fields */
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.modal-content,
+.modal-content label,
+.modal-content input,
+.modal-content select {
+    text-align: left; /* Left align all modal content text */
+}
+
+.form-row {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Space between rows */
+}
+
+.form-row label {
+    width: 150px; /* Fixed width for labels */
+    margin-right: 10px; /* Space between label and input */
+    text-align: left; /* Left align label text */
+}
+
+/* Password Container */
+.password-container {
+    position: relative; /* Position relative to contain the icon */
+    flex-grow: 1; /* Allow the container to take remaining space */
+}
+
+.password-container input {
+    padding-right: 40px; /* Add padding to the right for the icon */
+    width: 100%; /* Ensure the input takes full width */
+}
+
+.show-password {
+    position: absolute; /* Position the icon absolutely */
+    right: 10px; /* Align to the right within the container */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    cursor: pointer; /* Change cursor to pointer for interaction */
+    font-size: 18px; /* Adjust size of the icon */
+    color: #555; /* Change color for better visibility */
+}
+
+.show-password:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.save-section-btn{
+    width: 100px; /* Set a fixed width for both buttons */
+    padding: 12px 0; /* Uniform top and bottom padding */
+    border: none; /* Remove borders */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer on hover */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+    background-color: #45a049;
+}
+
+.save-section-btn:hover {
+    background-color: #327a36; /* Darker green on hover */
+}
+
+.add-section-btn{
+    width: 80%; /* Adjust button width */
+    padding: 12px; /* Increase padding for larger buttons */
+    margin-top: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #007bff;
+    margin-right: 10px; /* Space between buttons */
+}
+
+
+.modal-footer {
+    display: flex; /* Display buttons side by side */
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Space above the buttons */
+}
+
+.save-student-btn,
+.cancel-btn {
+    width: 100px; /* Set a fixed width for both buttons */
+    padding: 12px 0; /* Uniform top and bottom padding */
+    border: none; /* Remove borders */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer on hover */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.save-student-btn {
+    background-color: #45a049; /* Green for save */
+}
+
+.cancel-btn {
+    background-color: #dc3545; /* Red for cancel */
+}
+
+.save-student-btn:hover {
+    background-color: #327a36; /* Darker green on hover */
+}
+
+.cancel-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Retained Edit and Delete Icon Styling */
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}
+
+/* Adjust header to accommodate delete button */
+.header {
+    display: flex;
+    justify-content: flex-start; /* Keep dropdown and delete button on the left */
+    align-items: center;
+    gap: 10px; /* Space between dropdown and delete button */
+    margin-bottom: 20px;
+}
+
+/* Styling for the Delete Section button */
+.delete-section-btn {
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-section-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+#section-error {
+    color: red;
+    display: none;
+    font-size: 14px;
+}

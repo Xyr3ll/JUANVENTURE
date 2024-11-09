@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    /* Basic Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1f53bb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Style for each section container */
+    .section-container {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f2f7ff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for section headers */
+    .section-header {
+      font-size: 1.5rem;
+      color: #1f53bb;
+      font-weight: bold;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    /* Style for each user item */
+    .user-item {
+      padding: 8px;
+      border-radius: 6px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-item:last-child {
+      border-bottom: none; /* Remove border for the last item */
+    }
+
+    .user-item p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* Style for user scores */
+    .user-scores {
+      font-size: 0.95rem;
+      color: #444;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    /* Color coding for scores */
+    .user-scores span {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    .user-scores .high-score {
+      background-color: #4CAF50; /* Green for high scores */
+    }
+
+    .user-scores .medium-score {
+      background-color: #FF9800; /* Orange for medium scores */
+    }
+
+    .user-scores .low-score {
+      background-color: #F44336; /* Red for low scores */
+    }
+
+    /* Input fields */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus, .input-group select:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    /* Button styling */
+    .buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+</style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Students</h1>
+
+    <!-- Form for creating/updating/deleting student user records -->
+    <div class="input-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+    </div>
+
+    <div class="input-group">
+      <label for="section">Section:</label>
+      <select id="section" name="section">
+        <!-- Add options for each section -->
+        <option value="1">Section 1</option>
+        <option value="2">Section 2</option>
+        <option value="3">Section 3</option>
+        <option value="4">Section 4</option>
+        <!-- Add more sections as needed -->
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="username@gmail.com">
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" placeholder="Enter your password">
+    </div>
+
+    <div class="buttons">
+      <button id="submit" type="button">Submit</button>
+      <button id="update" type="button">Update</button>
+      <button id="delete" type="button">Delete</button>
+    </div>
+
+    <!-- Section for displaying student user data -->
+    <div class="user-container" id="user-container">
+      <h2>Registered Users</h2>
+      <!-- User data will be dynamically displayed here -->
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { getFirestore, setDoc, updateDoc, deleteDoc, doc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfO8C7DP4mDgQ7FeqEuFLG6zAIJrRUIUo",
+      authDomain: "fb-juanventures-8b8e2.firebaseapp.com",
+      projectId: "fb-juanventures-8b8e2",
+      storageBucket: "fb-juanventures-8b8e2.firebasestorage.app",
+      messagingSenderId: "999840546607",
+      appId: "1:999840546607:web:60ff7293b6cb3806caebda"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    // Initialize Firebase Authentication
+    const auth = getAuth(app);
+
+
+    // Helper function to calculate section based on user count
+async function calculateSection() {
+  const querySnapshot = await getDocs(collection(db, "studentUsers"));
+  const totalUsers = querySnapshot.size;
+  return Math.floor(totalUsers / 40) + 1;  // New section every 40 users
+}
+
+// Submit new user registration
+function isValidEmail(email) {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// Submit new user registration
+document.getElementById('submit').addEventListener('click', async () => {
+  const name = document.getElementById('name').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const section = parseInt(document.getElementById('section').value);  // Get selected section
+
+  if (!username) {
+    alert("Username cannot be empty.");
+    return;
+  }
+
+  let email = username.trim(); // Use the username as email directly
+
+  // Ensure it's a valid email format
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email format for the username.");
+    return;
+  }
+
+  try {
+    // Create user with email and password using Firebase Authentication
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    // Optionally store the user's other information (name, section) in Firestore if needed
+    await setDoc(doc(db, "studentUsers", username), {
+      Name: name,
+      Username: username,
+      Section: section
+    });
+
+    alert("User registered successfully!");
+    loadUserData(); // Reload user data after submit
+  } catch (error) {
+    console.error("Error creating user: ", error.message);
+    alert("Error registering user: " + error.message);
+  }
+});
+
+
+
+    // Update existing user registration
+    document.getElementById('update').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const name = document.getElementById('name').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        await updateDoc(doc(db, "studentUsers", username), {
+          Name: name,
+          Password: password
+        });
+        alert("User updated successfully.");
+        loadUserData(); // Reload user data after update
+      } catch (error) {
+        console.error("Error updating document: ", error);
+      }
+    });
+
+    // Delete user registration
+    document.getElementById('delete').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+
+      try {
+        await deleteDoc(doc(db, "studentUsers", username));
+        alert("User deleted successfully.");
+        loadUserData(); // Reload user data after delete
+      } catch (error) {
+        console.error("Error deleting document: ", error);
+      }
+    });
+
+    // Function to load user data and display it by section
+    function loadUserData() {
+  const userContainer = document.getElementById('user-container');
+  userContainer.innerHTML = '<h2>Registered Users</h2>'; // Clear and add header
+
+  getDocs(collection(db, "studentUsers")).then((querySnapshot) => {
+    const sections = {}; // Store users by section
+
+    querySnapshot.forEach((doc) => {
+      const userData = doc.data();
+      const section = userData.Section || 1; // Default to section 1 if not set
+
+      // Create an array for each section if not exists
+      if (!sections[section]) sections[section] = [];
+
+      // Add user data to the appropriate section
+      sections[section].push(userData);
+    });
+
+    // Display users grouped by section with scores for each quiz
+    for (const section in sections) {
+      const sectionContainer = document.createElement('div');
+      sectionContainer.classList.add('section-container');
+
+      const sectionHeader = document.createElement('h3');
+      sectionHeader.textContent = `Section ${section}`;
+      sectionHeader.classList.add('section-header');
+      sectionContainer.appendChild(sectionHeader);
+
+      sections[section].forEach(user => {
+        const userItem = document.createElement('div');
+        userItem.classList.add('user-item');
+
+        const nameElement = document.createElement('p');
+        nameElement.textContent = `Name: ${user.Name}, Username: ${user.Username}`;
+        userItem.appendChild(nameElement);
+
+        // Display scores with color coding
+        if (user.Scores && user.Scores.length > 0) {
+          const scoresElement = document.createElement('p');
+          scoresElement.classList.add('user-scores');
+
+          scoresElement.innerHTML = 'Scores: ';
+          user.Scores.forEach((score, index) => {
+            const scoreSpan = document.createElement('span');
+            scoreSpan.textContent = `Quiz ${index + 1}: ${score}`;
+
+            // Apply color classes based on score range
+            if (score >= 85) {
+              scoreSpan.classList.add('high-score');
+            } else if (score >= 70) {
+              scoreSpan.classList.add('medium-score');
+            } else {
+              scoreSpan.classList.add('low-score');
+            }
+
+            scoresElement.appendChild(scoreSpan);
+          });
+
+          userItem.appendChild(scoresElement);
+        } else {
+          const noScoresElement = document.createElement('p');
+          noScoresElement.textContent = "Scores: Not available";
+          noScoresElement.classList.add('user-scores');
+          userItem.appendChild(noScoresElement);
+        }
+
+        sectionContainer.appendChild(userItem);
+      });
+
+      userContainer.appendChild(sectionContainer);
+    }
+  }).catch((error) => {
+    console.error("Error getting documents: ", error);
+  });
+}
+
+
+    // Load user data when the page loads
+    window.onload = loadUserData;
+  </script>
+
+</body>
+</html>

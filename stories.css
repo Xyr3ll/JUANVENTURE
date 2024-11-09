@@ -1,0 +1,156 @@
+/* Main body and overall styles */
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    background-image: url('juanventures_4.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    color: #333;
+    overflow: hidden;
+}
+
+header {
+    background-color: rgba(145, 234, 250, 0.747) !important;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #000000 !important;
+    overflow: visible;
+}
+
+.logo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.2); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.logo img {
+    position: absolute;
+    height: 120px;
+    width: 380px; 
+    margin-left: 10px;
+    margin-top: -8px;
+    left: 0px; 
+    top: 0px;
+}
+
+/* Navigation styles */
+nav {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 35px;
+    display: inline-flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000 !important;
+    font-size: 15px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+.nav-links a:hover {
+    background-color: rgba(0, 225, 255, 0.897) !important; 
+    color: #f1f1f1 !important;
+    padding: 15px; 
+    border-radius: 10px;
+}
+
+/* Main section styling */
+main {
+    padding-top: 0; /* Remove padding from top */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-direction: column;
+    height: calc(100vh - 120px);  /* Full viewport height */
+    position: relative; /* Relative positioning to control child elements */
+}
+
+/* Wrapper for carousel and arrow */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh; /* Adjust height to control vertical alignment */
+}
+
+/* Ensuring all cards have the same size */
+.carousel {
+    display: flex;
+    justify-content: center;  /* Horizontal centering of cards */
+    align-items: center;
+    gap: 20px; /* Adjust gap between cards */
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 200px; /* Fixed width for each card */
+    height: 350px; /* Fixed height for each card */
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 60%; /* Ensure consistent height for images */
+    object-fit: cover; /* Crop the image to fit the card */
+}
+
+.card-content {
+    padding: 10px; /* Reduced padding for content */
+    background-color: rgba(141, 235, 252, 0.925);
+    height: 40%; /* Set content height to fill remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+}
+
+.card h3, .card h4 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    line-height: 20px;
+    color: #000000;
+    text-align: center;
+}
+
+.card p {
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+}

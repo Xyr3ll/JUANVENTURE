@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f53bb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh; /* Ensures full height of the page */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #a0dcff;
+    width: 70px;
+    height: 100vh; /* Full viewport height */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+}
+
+.icon-container img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* Main Content Styling */
+.container {
+    width: 90%;
+    margin: 50px auto; /* Match the sidebar width */
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+form {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 0;
+    margin: 20px auto; /* Adds margin on top and bottom for spacing */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: stretch; /* Ensure items stretch to fill the form width */
+}
+
+.form-group {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-top: 20px; /* Add spacing above the buttons */
+    position: relative;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 20px; /* Space between label and input */
+    min-width: 150px; /* Fixed width for labels for consistency */
+    text-align: right; /* Align label text to the right */
+    color: black;
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 20px;
+    border: 2px solid #dddddd;
+}
+
+.upload-btn {
+    background-color: #368bc1;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    flex: 1; /* Allows input fields to stretch */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+}
+
+.upload-section {
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+.upload-section label {
+    margin-right: 20px; /* Space between label and upload input */
+}
+
+.show-password {
+    position: absolute; /* Allow positioning inside the input */
+    right: 10px; /* Align the icon to the right inside the input */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Correct vertical alignment */
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    z-index: 1; /* Ensure the icon is on top of the input field */
+}
+
+input[type="password"] {
+    padding-right: 30px; /* Add padding to the right to make space for the icon */
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px; /* Space above the edit button */
+    display: inline-block;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.save-btn {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px; /* Spacing above the button */
+    display: inline-block;
+    position: relative;
+}
+
+.save-btn.hidden {
+    display: none; /* Hidden when not in edit mode */
+}
+
+.save-btn:hover {
+    background-color: #368c42; /* Slightly darker on hover */
+}
+

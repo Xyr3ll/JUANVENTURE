@@ -1,0 +1,117 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    background-image: url('juanventures_4.png'); /* Add your background image here */
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    color: #333;
+    overflow: hidden;
+  }
+
+header {
+    background-color: rgba(145, 234, 250, 0.747) !important;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #000000 !important;
+    overflow: visible;
+}
+
+.logo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+.logo:hover {
+    transform: scale(1.2); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+  
+.logo img {
+    position: absolute;
+    height: 120px;
+    width: 380px; 
+    margin-left: 10px;
+    margin-top: -8px;
+    left: 0px; 
+    top: 0px;
+}
+
+/* Navigation styles */
+nav {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 35px;
+    display: inline-flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000 !important;
+    font-size: 15px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+.nav-links a:hover {
+    background-color: rgba(0, 225, 255, 0.897) !important; 
+    color: #f1f1f1 !important;
+    padding: 15px; 
+    border-radius: 10px;
+}
+
+.qr-code {
+    width: 400px; 
+    height: 400px;
+    margin-right: 20px;
+}
+
+.content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    margin-bottom: 0;
+}
+
+.overlay-text {
+    font-size: 30px;
+    color: #000000;
+    text-shadow: 4px 4px 8px rgba(91, 236, 255, 0.897); 
+    padding: 20px;
+    white-space: nowrap;
+    line-height: 45px; /* Adjust for better vertical spacing */
+}
+
+.container {
+    position: relative;
+    height: 110vh; /* Full viewport height */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+}

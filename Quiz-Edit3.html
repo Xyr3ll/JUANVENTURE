@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Question Management</title>
+  <style>
+    /* Basic Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1f53bb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Input fields */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    /* Button styling */
+    .buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .quiz-container {
+      margin-top: 30px;
+    }
+
+    .quiz-item {
+      padding: 15px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      background-color: #fafafa;
+    }
+
+    .quiz-item h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .quiz-item .doc-id {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .quiz-item button {
+      margin-top: 10px;
+      background-color: #f44336;
+    }
+
+    .quiz-item button:hover {
+      background-color: #e53935;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Si Pagong at si Matsing</h1>
+
+    <!-- Form for creating/updating/deleting quiz questions -->
+    <div class="input-group">
+      <label for="docId">Document ID:</label>
+      <input type="text" id="docId" name="docId" placeholder="Enter document ID">
+    </div>
+
+    <div class="input-group">
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question" placeholder="Enter question here">
+    </div>
+
+    <div class="input-group">
+      <label for="optionA">Option A:</label>
+      <input type="text" id="optionA" name="optionA" placeholder="Enter option A">
+    </div>
+
+    <div class="input-group">
+      <label for="optionB">Option B:</label>
+      <input type="text" id="optionB" name="optionB" placeholder="Enter option B">
+    </div>
+
+    <div class="input-group">
+      <label for="optionC">Option C:</label>
+      <input type="text" id="optionC" name="optionC" placeholder="Enter option C">
+    </div>
+
+    <div class="input-group">
+      <label for="optionD">Option D:</label>
+      <input type="text" id="optionD" name="optionD" placeholder="Enter option D">
+    </div>
+
+    <div class="input-group">
+      <label for="answer">Correct Answer:</label>
+      <select id="answer" name="answer">
+        <option value="0">A</option>
+        <option value="1">B</option>
+        <option value="2">C</option>
+        <option value="3">D</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button id="create" type="button">Submit</button>
+      <button id="update" type="button">Update</button>
+      <button id="dlt" type="button">Delete</button>
+    </div>
+
+    <!-- Section for displaying quiz questions -->
+    <div class="quiz-container" id="quiz-container">
+      <h2>Quiz Questions</h2>
+      <!-- Quiz data will be dynamically displayed here -->
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, setDoc, updateDoc, deleteDoc, doc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfO8C7DP4mDgQ7FeqEuFLG6zAIJrRUIUo",
+      authDomain: "fb-juanventures-8b8e2.firebaseapp.com",
+      projectId: "fb-juanventures-8b8e2",
+      storageBucket: "fb-juanventures-8b8e2.firebasestorage.app",
+      messagingSenderId: "999840546607",
+      appId: "1:999840546607:web:60ff7293b6cb3806caebda"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+// Submit new quiz question
+document.getElementById('create').addEventListener('click', async () => {
+  const docId = document.getElementById('docId').value || `${Date.now()}`;  // Use input ID or generate one
+  const question = document.getElementById('question').value;
+  const optionA = document.getElementById('optionA').value;
+  const optionB = document.getElementById('optionB').value;
+  const optionC = document.getElementById('optionC').value;
+  const optionD = document.getElementById('optionD').value;
+  const answer = parseInt(document.getElementById('answer').value, 10);
+
+  try {
+    await setDoc(doc(db, "Quizzes3", docId), {  // Change "Quizzes2" to "Quizzes3"
+      Question: question,
+      Options: [optionA, optionB, optionC, optionD],
+      Answer: answer
+    });
+    alert("Quiz question added successfully with document ID: " + docId);
+    loadQuizData(); // Reload quiz data after submit
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+});
+
+// Function to load quiz data and display it
+function loadQuizData() {
+  const quizContainer = document.getElementById('quiz-container');
+  quizContainer.innerHTML = '<h2>Quiz Questions</h2>'; // Clear and add header
+
+  getDocs(collection(db, "Quizzes3")).then((querySnapshot) => {  // Change "Quizzes2" to "Quizzes3"
+    querySnapshot.forEach((doc) => {
+      const quizData = doc.data();
+      const docId = doc.id; // Get the document ID
+      const question = quizData.Question;
+      const options = quizData.Options;
+
+      // Create elements to display the docId, question, and options
+      const quizItem = document.createElement('div');
+      quizItem.classList.add('quiz-item');
+
+      const docIdElement = document.createElement('div');
+      docIdElement.classList.add('doc-id');
+      docIdElement.textContent = `Document ID: ${docId}`;
+      quizItem.appendChild(docIdElement);
+
+      const questionElement = document.createElement('h3');
+      questionElement.textContent = question;
+      quizItem.appendChild(questionElement);
+
+      options.forEach(option => {
+        const optionButton = document.createElement('button');
+        optionButton.textContent = option;
+        quizItem.appendChild(optionButton);
+      });
+
+      quizContainer.appendChild(quizItem);
+    });
+  }).catch((error) => {
+    console.error("Error getting documents: ", error);
+  });
+}
+
+    // Load quiz data when the page loads
+    window.onload = loadQuizData;
+  </script>
+
+</body>
+</html>

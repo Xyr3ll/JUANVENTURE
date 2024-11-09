@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #3366CC; /* Same background as your design */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #3366CC; /* Matches the background color in the design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-box {
+    background-color: #E6E6FA; /* Light background color for the box */
+    padding: 40px;
+    border-radius: 10px;
+    width: 800px; /* Increased width to make the login box wider */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.logo {
+    width: 730px; /* Allow the logo to maintain its natural size */
+    justify-content: center;
+}
+
+.input-group {
+    position: relative; /* Positioning for the show-password icon */
+    margin-bottom: 20px;
+    text-align: left; /* Align labels to the left */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Add space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.password-group {
+    position: relative;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px; /* Align the icon inside the input box */
+    top: 65%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+button.login-btn {
+    background-color: #3366CC;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.login-btn:hover {
+    background-color: #003366;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #3366CC;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}

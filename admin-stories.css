@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f53bb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #a0dcff;
+    width: 70px;
+    height: 100vh; /* Full viewport height */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.icon-container img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icon-container img:hover {
+    opacity: 0.7; /* Add a hover effect */
+}
+
+/* Container Styling */
+.container {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    color: black;
+    background-color: #aab3bdfd;;
+}
+
+th {
+    background-color: #aab3bdfd;
+}
+
+/* Edit and Delete Icon Styling */
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}

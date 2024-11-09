@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagong at Matsing</title>
+    <link rel="stylesheet" href="admin-makahiya.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="icon-container">
+            <a href="admin-profile.html">
+            <img src="profile_1.png" alt="Profile Icon">
+            </a>
+        </div>
+        <div class="icon-container">
+            <a href="admin-stories.html">
+            <img src="open-book.png" alt="Book Icon">
+            </a>
+        </div>
+        <div class="icon-container">
+            <a href="admin-students.html">
+            <img src="people (1).png" alt="User Icon">
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Pagong at Matsing</h1>
+            <button id="openModalBtn" class="add-question-btn">Add Question</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Questions</th>
+                    <th>Type</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Question 1</td>
+                    <td>Multiple Choice</td>
+                    <td><img src="pen_2.png" alt="Edit Icon" class="icon-btn"></td>
+                    <td><img src="bin_3.png" alt="Delete Icon" class="icon-btn"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Question 2</td>
+                    <td>Multiple Choice</td>
+                    <td><img src="pen_2.png" alt="Edit Icon" class="icon-btn"></td>
+                    <td><img src="bin_3.png" alt="Delete Icon" class="icon-btn"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Question 3</td>
+                    <td>Multiple Choice</td>
+                    <td><img src="pen_2.png" alt="Edit Icon" class="icon-btn"></td>
+                    <td><img src="bin_3.png" alt="Delete Icon" class="icon-btn"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Question 4</td>
+                    <td>Multiple Choice</td>
+                    <td><img src="pen_2.png" alt="Edit Icon" class="icon-btn"></td>
+                    <td><img src="bin_3.png" alt="Delete Icon" class="icon-btn"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Question 5</td>
+                    <td>Multiple Choice</td>
+                    <td><img src="pen_2.png" alt="Edit Icon" class="icon-btn"></td>
+                    <td><img src="bin_3.png" alt="Delete Icon" class="icon-btn"></td>
+                </tr>
+            </tbody>
+        </table>
+        </script>
+    </div>
+<!-- Modal Structure -->
+<div class="modal" id="addQuestionModal">
+    <div class="modal-content">
+        <h2>Add Question</h2>
+
+        <label for="questionType">Type:</label>
+        <select id="questionType">
+            <option value="multiple">Multiple Choice</option>
+        </select>
+
+        <label for="questionText">Question:</label>
+        <input type="text" id="questionText" placeholder="Enter the question">
+
+        <!-- Answers Section -->
+        <div id="answersSection">
+            <!-- Answers will be dynamically added here -->
+        </div>
+
+        <div class="button-container">
+            <button id="addQuestionBtn">Add Question</button>
+            <button id="cancelQuestionBtn" onclick="closeAddQuestionModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Link to the JavaScript file -->
+<script type="module" src="add-question2.js"></script>
+
+</body>
+</html>
